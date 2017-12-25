@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
+import { observer } from "mobx-react";
 
-class AddRestaurant extends Component {
+
+const AddRestaurant = observer(class AddRestaurant extends Component {
   constructor(){
     super();
     this.state = {
@@ -41,5 +43,5 @@ class AddRestaurant extends Component {
       </div>
     )
   }
-}
+})
 export default AddRestaurant;
