@@ -16,8 +16,26 @@ class myStore {
                 cuisine: "Indian Food",
                 id: uuid.v4()
               },
+              {
+                name: "Marhaba3",
+                description: "blah",
+                cuisine: "Indian Food",
+                id: uuid.v4()
+              },
+              {
+                name: "Marhaba4",
+                description: "blah",
+                cuisine: "Indian Food",
+                id: uuid.v4()
+              },
+              {
+                name: "Marhaba5",
+                description: "blah",
+                cuisine: "Indian Food",
+                id: uuid.v4()
+              },
             ],
-            currentrests: [],
+            cuisines: [],
             currentcuisine: "",
             current: {
 

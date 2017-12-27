@@ -8,7 +8,8 @@ const AddRestaurant = observer(class AddRestaurant extends Component {
     this.state = {
       newrestaurant: {
         name: "",
-        description: ""
+        description: "",
+        cuisine: ""
       }
     }
   }
@@ -18,7 +19,9 @@ const AddRestaurant = observer(class AddRestaurant extends Component {
     } else {
     let x = {
       name: this.refs.name.value,
-      description: this.refs.description.value
+      description: this.refs.description.value,
+      cuisine: this.refs.cuisine.value
+
     }
     this.setState({newrestaurant: x}, () => {this.props.addRes(this.state.newrestaurant)})
     e.preventDefault()
@@ -37,6 +40,10 @@ const AddRestaurant = observer(class AddRestaurant extends Component {
         <div>
           <label>Description</label>
           <input type="text" ref="description"/>
+        </div>
+        <div>
+          <label>Cuisine</label>
+          <input type="text" ref="cuisine"/>
         </div>
         <input type="submit" value='Submit'/>
         </form>

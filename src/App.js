@@ -13,6 +13,7 @@ const App = observer(class App extends Component {
   constructor(){
     super();
     this.state = {
+      cuisines: [],
       restaurant: {
         name: "",
         description: "",
@@ -25,13 +26,26 @@ const App = observer(class App extends Component {
     let restaurants = store.restaurants
     restaurants.push(res)
     store.restaurants = restaurants
-
+    this.createc()
   }
   changeCurrent(id){
     let restaurants = store.restaurants
     let index = restaurants.findIndex((res) => res.id === id)
     this.setState({restaurant:restaurants[index]}, () => {console.log(this.state.restaurant)})
   }
+  createc(){
+    let cuisines = [];
+    store.restaurants.forEach((x) => {
+      if (cuisines.indexOf(x.cuisine)==-1) {
+        cuisines.push(x.cuisine);
+      }
+    });
+    this.setState({cuisines: cuisines})
+  }
+  componentWillMount(){
+    this.createc()
+  }
+
   render() {
     const navbar = (
       <Navbar>
@@ -54,7 +68,7 @@ const App = observer(class App extends Component {
         <Panel>
         <Route exact path="/" render={()=>
           <div>
-                <MyList changeCurrent={this.changeCurrent.bind(this)} list={store.restaurants} />
+                <MyList changeCurrent={this.changeCurrent.bind(this)} cuisines={this.state.cuisines} list={store.restaurants} />
                 <AddRestaurant addRes={this.addRes.bind(this)}/>
               </div>}
                  />

@@ -19,8 +19,13 @@ const MyList = observer(class MyList extends Component {
   });
   store.currentcuisine = e.target.value
 }
+  handleChecked(e){
+    console.log(this.state.selectedOption)
+    return (this.state.selectedOption === e.target.value)
+  }
   render() {
     let items;
+    let cuisines;
     items = this.props.list.map(
       x => {
         if(x.cuisine.includes(store.currentcuisine))
@@ -29,20 +34,25 @@ const MyList = observer(class MyList extends Component {
         )
       }
     )
+    cuisines = this.props.cuisines.map(
+      x => {
+        return (
+          <label>
+          <input type="radio" value={x} checked={this.state.selectedOption === x} onChange={this.handleOptionChange.bind(this)}/>
+          {x}
+          </label>
+                )
+      }
+    )
+
     return (
       <div>
       <label>
       <input type="radio" value="" checked={this.state.selectedOption === ''} onChange={this.handleOptionChange.bind(this)}/>
       All
       </label>
-      <label>
-      <input type="radio" value="Burgers" checked={this.state.selectedOption === 'Burgers'} onChange={this.handleOptionChange.bind(this)}/>
-      Burgers
-      </label>
-      <label>
-      <input type="radio" value="Indian" checked={this.state.selectedOption === 'Indian'} onChange={this.handleOptionChange.bind(this)}/>
-      Indian
-      </label>
+
+      {cuisines}
         {items}
       </div>
     );
