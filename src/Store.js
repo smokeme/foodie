@@ -17,8 +17,10 @@ class myStore {
                 id: uuid.v4()
               },
             ],
+            currentrests: [],
+            currentcuisine: "",
             current: {
-              
+
             },
         })
     }
